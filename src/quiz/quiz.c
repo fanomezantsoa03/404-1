@@ -1,16 +1,7 @@
-#include "../../inc/fahaleovantena.h"
-#include <time.h>
-
-static void shuffle_questions(char **questions, int num_questions)
-{
-    srand(time(NULL));
-    for (int i = num_questions - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
-        char *temp = questions[i];
-        questions[i] = questions[j];
-        questions[j] = temp;
-    }
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ncurses.h>
 
 char    **all_questions(void)
 {
@@ -34,13 +25,12 @@ char    **all_questions(void)
     return (all);
 }
 
-bool varavarana(void)
+int varavarana(void)
 {
     static int index;
     int i = 2;
     char **all = all_questions();
     int result[16] = {'3', '2', '2', '2', '2', '2', '2', '3', '3', '3', '3', '1', '2', '1', '1', '1'};
-    shuffle_questions(all, 16);
     while (i > 0)
     {
         printf("%s", all[index]);
@@ -49,14 +39,13 @@ bool varavarana(void)
         if (ch == result[index]) {
             printf("Felicitations ! Vous avez ouvert une porte vers l'independance .\n");
             index++;
-            return (true);
+            return (1);
         } else {
             printf("Non nefaaaa !\n");
             index++;
         }
         i--;
-        if (i == 0)
-            printf("Ty tena daika tssssss !\n");
     }
-    return (false);
+    printf("Ty tena daika tssssss !");
+    return (0);
 }
