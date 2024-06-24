@@ -4,3 +4,5 @@ Hackathon 42 (Game "Fahaleovantena")
 PLAYS
 -make
 -./fahaleovantena
+
+test
