@@ -2,6 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ncurses.h>
+#include <time.h>
+
+int check_pr(int stock[], int index)
+{
+    int j = 15;
+    int i = 0;
+    while (j >= 0)
+    {
+        if (stock[i] == index)
+            return (0);
+        j--;
+        i++;
+    }
+    return (1);
+}
+
+int random_nbr(int min, int max)
+{
+    static int index = 1;
+    if (index)
+    {
+        srand(time(NULL));
+        index = 0;
+    }
+    return (min + rand() % (max - min + 1));
+}
 
 char    **all_questions(void)
 {
@@ -18,7 +44,7 @@ char    **all_questions(void)
     all[9] = strdup("Iza no mpanjaka farany teto Madagasikara ?\n1. Rindra II\n2. Rasoherina\n3. Ranavalona III\n");
     all[10] = strdup("Misy foko firy eto Madagasikara ?\n1. 22\n2. 17\n3. 18\n");
     all[11] = strdup("Inona ny vokatra fanondranana mampalaza an'i Madagasikara?\n1-vanilla\n2-jirofo\n3-vary\n");
-    all[12] = strdup("Taiza no natao ny fanambarana ny fahaleovantena an'i madagasikara?\n1-lalan'ny Fahaleovantena\n2-Kianjan'i Magamasina\n3-Kianjan'ny 13 May\n");
+    all[12] = strdup("Taiza no natao ny fanambarana ny fahaleovantena an'i madagasikara?\n1-lalan'ny Fahaleovantena\n2-Kianjan'i Mahamasina\n3-Kianjan'ny 13 May\n");
     all[13] = strdup("Firy ny faritra eto Madagasikara?\n1-23\n2-22\n3-21\n");
     all[14] = strdup("Fanalavana ny M.D.R.M?\n1-Mouvement Democratique pour la Rénovation Malgache\n2-Mouvement Democratique pour la Révolution Malgache\n3-Mouvement Democratique pour la République Malgache\n");
     all[15] = strdup("tohizo ity ohabolana ity : 'Aleo very tsikalakalam-bola ...\n1- toy izay very tsikalakalam-pihavanana.'\n2- toy izay very tsikalakalam-pifaliana.'\n3- toy izay very tsikalakalam-pinamanana.'\n");
@@ -28,22 +54,27 @@ char    **all_questions(void)
 int varavarana(void)
 {
     static int index;
+    static int j = 0;
+    static int stock[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int i = 2;
     char **all = all_questions();
-    int result[16] = {'3', '2', '2', '2', '2', '2', '2', '3', '3', '3', '3', '1', '2', '1', '1', '1'};
+    static int result[16] = {'3', '2', '2', '2', '2', '2', '2', '3', '3', '3', '3', '1', '2', '1', '1', '1'};
     while (i > 0)
     {
+        while (result[index] == '0')
+            index = random_nbr(0, 15);
+        printf("%d\n\n", index);
         printf("%s", all[index]);
         int ch = getchar();
         getchar();
         if (ch == result[index]) {
             printf("Felicitations ! Vous avez ouvert une porte vers l'independance .\n");
-            index++;
+            result[index] = '0';
             return (1);
         } else {
             printf("Non nefaaaa !\n");
-            index++;
         }
+        result[index] = '0';
         i--;
     }
     printf("Ty tena daika tssssss !");
