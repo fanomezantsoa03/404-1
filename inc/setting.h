@@ -21,5 +21,7 @@ int		check_win_condition(t_map *map);
 void	update_player(t_game *game, int new_x, int new_y, char new_tile);
 void	action_player(t_game *game, int new_x, int new_y);
 int		handle_keypress(int keysym, t_game *game);
+int     handle_win_keypress(int keycode, t_game *game);
+int     handle_over_keypress(int keycode, t_game *game);
 
 #endif

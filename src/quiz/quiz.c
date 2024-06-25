@@ -63,7 +63,6 @@ int varavarana(void)
     {
         while (result[index] == '0')
             index = random_nbr(0, 15);
-        printf("%d\n\n", index);
         printf("%s", all[index]);
         int ch = getchar();
         getchar();

@@ -12,6 +12,16 @@
 
 #include "../../inc/fahaleovantena.h"
 
+void show_win(t_game *game)
+{
+    draw_window(game, "assets/win.xpm", "audio/win.wav");
+    int play_selected = 0;
+    mlx_key_hook(game->win, handle_win_keypress, game);
+    mlx_loop_hook(game->mlx, handle_win_keypress, &play_selected);
+    mlx_loop(game->mlx);
+}
+
+
 int	check_win_condition(t_map *map)
 {
 	int	y;
@@ -38,7 +48,8 @@ void	check_win(t_game *game)
 	{
 		printf(GREEN "Congratulations, you won!" RESET "\n");
 		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
 		free_map(game->map);
-		exit(EXIT_SUCCESS);
+		show_win(game);
 	}
 }

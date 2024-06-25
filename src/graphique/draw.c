@@ -38,6 +38,12 @@ static void	checker(t_game *game, int y, int x)
 		draw_tile(game, x, y, game->open);
 	else if (game->map->grid[y][x] == 'P')
 		draw_tile(game, x, y, game->player);
+	else if (game->map->grid[y][x] == 'G')
+		draw_tile(game, x, y, game->left);
+	else if (game->map->grid[y][x] == 'D')
+		draw_tile(game, x, y, game->right);
+	else if (game->map->grid[y][x] == 'B')
+		draw_tile(game, x, y, game->down);
 }
 
 void	draw_map(t_game *game)

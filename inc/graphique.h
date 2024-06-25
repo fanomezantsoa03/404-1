@@ -20,5 +20,6 @@ void	draw_map(t_game *game);
 void	update_draw(t_game *game);
 t_image	load_image(void *mlx, const char *path);
 void	import_images(t_game *game);
+void    draw_window(t_game *game, char *asset, const char *audio);
 
 #endif

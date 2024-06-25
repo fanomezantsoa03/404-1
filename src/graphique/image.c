@@ -34,4 +34,7 @@ void	import_images(t_game *game)
 	game->empty = load_image(game->mlx, "assets/0.xpm");
 	game->collected = load_image(game->mlx, "assets/O.xpm");
 	game->open = load_image(game->mlx, "assets/W.xpm");
+	game->left = load_image(game->mlx, "assets/G.xpm");
+	game->right = load_image(game->mlx, "assets/D.xpm");
+	game->down = load_image(game->mlx, "assets/B.xpm");
 }

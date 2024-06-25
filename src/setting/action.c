@@ -11,11 +11,27 @@
 /* ************************************************************************** */
 
 #include "../../inc/fahaleovantena.h"
-#include <stdbool.h>
+
+
+void show_over(t_game *game)
+{
+    draw_window(game, "assets/gameover.xpm", "audio/gameover.wav");
+    int play_selected = 0;
+    mlx_key_hook(game->win, handle_over_keypress, game);
+    mlx_loop_hook(game->mlx, handle_over_keypress, &play_selected);
+    mlx_loop(game->mlx);
+}
 
 void	update_position(t_game *game, int new_x, int new_y)
 {
-	game->map->grid[new_y][new_x] = 'P';
+    if (new_x > game->player_x)
+	    game->map->grid[new_y][new_x] = 'D';
+    else if (new_x < game->player_x)
+	    game->map->grid[new_y][new_x] = 'G';
+    else if (new_y < game->player_y)
+	    game->map->grid[new_y][new_x] = 'B';
+    else
+	    game->map->grid[new_y][new_x] = 'P';
 	game->player_x = new_x;
 	game->player_y = new_y;
 }
@@ -30,11 +46,13 @@ void	handle_collectible(t_game *game, int new_x, int new_y, char new_tile)
             correct_answer = varavarana();
 			if (correct_answer == false)
 			{
-					
-				break;
+				mlx_destroy_window(game->mlx, game->win);
+				mlx_destroy_display(game->mlx);
+				free_map(game->map);
+				show_over(game);
 			}
         }
-		game->map->grid[game->player_y][game->player_x] = 'O';
+		game->map->grid[game->player_y][game->player_x] = '0';
 	}
 	else
 		game->map->grid[game->player_y][game->player_x] = 'O';

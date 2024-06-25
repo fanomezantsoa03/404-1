@@ -55,10 +55,16 @@ typedef struct s_game
 	t_image	player;
 	t_image	empty;
 	t_image	collected;
+	t_image	left;
+	t_image	right;
+	t_image	down;
 	t_map	*map;
 	int		player_x;
 	int		player_y;
 	int		move_count;
+	void	*background_img;
+    int		bg_width;
+    int		bg_height;
 }			t_game;
 
 #endif

@@ -59,3 +59,23 @@ int	handle_keypress(int keysym, t_game *game)
 	}
 	return (0);
 }
+
+int handle_over_keypress(int keycode, t_game *game)
+{
+    if (keycode == 65307)
+    {
+        mlx_destroy_window(game->mlx, game->win);
+        exit(0);
+    }
+    return 0;
+}
+
+int handle_win_keypress(int keycode, t_game *game)
+{
+    if (keycode == 65307)
+    {
+        mlx_destroy_window(game->mlx, game->win);
+        exit(0);
+    }
+    return 0;
+}

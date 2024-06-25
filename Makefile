@@ -19,6 +19,7 @@ GNL =	lib/gnl/get_next_line_utils.c lib/gnl/get_next_line.c
 
 SRC = 	src/map/map_utils.c src/map/map_read.c src/map/map_initialization.c src/map/map.c\
 		src/quiz/quiz.c\
+		src/audio/audio.c\
 		src/graphique/window.c src/graphique/draw.c src/graphique/image.c\
 		src/setting/input.c src/setting/action.c src/setting/check.c\
 		src/fahaleovantena.c
@@ -33,9 +34,11 @@ INC = -I include
 
 MLXF = -lXext -lX11 -lm
 
+SDL = -lSDL2
+
 $(NAME) :  $(OBJG) $(OBJS)
 	@make -C lib/minilibx-linux
-	cc $(FLAG) $(OBJG) $(OBJS) $(INC) $(MLX)  -o $(NAME) $(MLXF)
+	cc $(FLAG) $(OBJG) $(OBJS) $(INC) $(MLX)  -I/usr/include/SDL2 -D_REENTRANT -lSDL2 -o $(NAME) $(MLXF)
 
 all : $(NAME)
 
