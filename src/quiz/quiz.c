@@ -59,6 +59,7 @@ int varavarana(void)
     int i = 2;
     char **all = all_questions();
     static int result[16] = {'3', '2', '2', '2', '2', '2', '2', '3', '3', '3', '3', '1', '2', '1', '1', '1'};
+    index = random_nbr(0, 15);
     while (i > 0)
     {
         while (result[index] == '0')
