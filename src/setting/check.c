@@ -46,7 +46,6 @@ void	check_win(t_game *game)
 {
 	if (check_win_condition(game->map))
 	{
-		printf(GREEN "Congratulations, you won!" RESET "\n");
 		mlx_destroy_window(game->mlx, game->win);
 		mlx_destroy_display(game->mlx);
 		free_map(game->map);

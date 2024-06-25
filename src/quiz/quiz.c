@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ncurses.h>
+#include "../../inc/fahaleovantena.h"
 #include <time.h>
 
 int check_pr(int stock[], int index)
@@ -51,7 +48,7 @@ char    **all_questions(void)
     return (all);
 }
 
-int varavarana(void)
+bool varavarana(void)
 {
     static int index;
     static int j = 0;
@@ -68,15 +65,15 @@ int varavarana(void)
         int ch = getchar();
         getchar();
         if (ch == result[index]) {
-            printf("Felicitations ! Vous avez ouvert une porte vers l'independance .\n");
+            printf(GREEN "Tohizo fa tsara !" RESET "\n");
             result[index] = '0';
-            return (1);
-        } else {
-            printf("Non nefaaaa !\n");
+            return (true);
+        } else if (i == 2){
+            printf(RED "Diso ! Manana andrana iray sisa ianao !" RESET "\n");
         }
         result[index] = '0';
         i--;
     }
-    printf("Ty tena daika tssssss !");
-    return (0);
+    printf(RED "Mbola ho avy ny anjaranao !" RESET "\n");
+    return (false);
 }
