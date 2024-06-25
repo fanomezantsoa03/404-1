@@ -5,11 +5,11 @@ Hackathon 42
 Jeu : Fahaleovantena
 
 Description :
-Fahaleovantena est un jeu en 2d, qui a pour but d'obtenir l'independance par la connaissance de la culture et histoire de Madagascar a travers des quiz.
-Le jeu consiste a aller jusqu'au drapeau qui est la marque de l'independance.
+ Fahaleovantena est un jeu en 2d, qui a pour but d'obtenir l'indépendance par la connaissance de la culture et histoire de Madagascar à travers des quiz.
+Le jeu consiste à aller jusqu'au drapeau qui est la marque de l'indépendance.
 
-Deroulement :
- Le labyrinthe contient des portes qui se debloquent en resolvant les enigmes.
+Déroulement :
+ Le labyrinthe contient des portes qui se débloquent en résolvant les énigmes.
 Le joueur a 2 tentatives par porte.
 
 PLAYS :
